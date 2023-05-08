@@ -1,3 +1,4 @@
+import 'package:crud_restapi/Style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,12 +19,17 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
           children: [
             Container(
               child: SingleChildScrollView(
+                padding: EdgeInsets.all(20),
                 child: Column(children: [
-                  TextField(onChanged:(value){} ,),
-                  TextField(onChanged: (value){},),
-                  TextField(onChanged: (value){},),
-                  TextField(onChanged: (value){},),
-                  TextField(onChanged: (value){},)
+                  TextField(onChanged:(value){} ,decoration: AppInputDecoration("Product Name"),),
+                  SizedBox(height: 20),
+                  TextField(onChanged: (value){},decoration: AppInputDecoration("Product Code"),),
+                  SizedBox(height: 20),
+                  TextField(onChanged: (value){},decoration: AppInputDecoration("Product Image"),),
+                  SizedBox(height: 20),
+                  TextField(onChanged: (value){},decoration: AppInputDecoration("Unit Price"),),
+                  SizedBox(height: 20),
+                  TextField(onChanged: (value){},decoration: AppInputDecoration("Total Price"),)
                 ],),
               )
             )
