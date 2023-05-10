@@ -2,6 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 const colorRed=Color.fromRGBO (231, 28, 36, 1);
 const colorGreen=Color.fromRGBO(33, 191, 115, 1);
@@ -74,5 +75,31 @@ Ink SuccessButtonChild(ButtonText){
           fontSize: 15
       ),),
     ),
+  );
+}
+
+
+void ErrorToast(msg)
+{
+  Fluttertoast.showToast(
+      msg: "This is Center Short Toast",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: colorRed,
+      textColor: Colors.white,
+      fontSize: 16.0
+  );
+}
+void SuccessToast()
+{
+  Fluttertoast.showToast(
+      msg: "This is Center Short Toast",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: colorGreen,
+      textColor: Colors.white,
+      fontSize: 16.0
   );
 }
