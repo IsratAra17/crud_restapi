@@ -43,6 +43,7 @@ FormOnSubmit() {
 
   }
   else if (FormValues['Qty']!.length == 0) {
+    ErrorToast('Product Code Required!');
 
   }
   else if (FormValues['UnitPrice']!.length == 0) {
