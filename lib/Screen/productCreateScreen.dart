@@ -37,9 +37,11 @@ FormOnSubmit() {
 
     ErrorToast('Product Name Required!');
 
+  }
+  else if (FormValues['ProductCode']!.length == 0) {
+    ErrorToast('Product Name Required!');
 
   }
-  else if (FormValues['ProductCode']!.length == 0) {}
   else if (FormValues['Qty']!.length == 0) {
 
   }
