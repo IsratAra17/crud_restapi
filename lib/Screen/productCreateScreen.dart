@@ -47,6 +47,7 @@ FormOnSubmit() {
 
   }
   else if (FormValues['UnitPrice']!.length == 0) {
+    ErrorToast('Unit Price Required!');
 
   }
   else if (FormValues['TotalPrice']!.length == 0) {}
