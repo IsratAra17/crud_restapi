@@ -27,30 +27,23 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
       FormValues.update(MapKey, (value) => textvalue);
     });
   }
-FormOnSubmit()
-{
-  if(FormValues['Img']!.length==0)
-    {
+FormOnSubmit() {
+  if (FormValues['Img']!.length == 0) {
+    ErrorToast('Image required!');
 
-    }
-  else if(FormValues['ProductName']!.length==0)
-    {
+  }
+  else if (FormValues['ProductName']!.length == 0) {
 
-    }
-  else if(FormValues['ProductCode']!.length==0)
-    {
+  }
+  else if (FormValues['ProductCode']!.length == 0) {}
+  else if (FormValues['Qty']!.length == 0) {
+
+  }
+  else if (FormValues['UnitPrice']!.length == 0) {
+
+  }
+  else if (FormValues['TotalPrice']!.length == 0) {}
 }
-  else if(FormValues['Qty']!.length==0)
-    {
-
-    }
-  else if(FormValues['UnitPrice']!.length==0)
-    {
-
-    }
-  else if(FormValues['TotalPrice']!.length==0)
-    {
-    }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
