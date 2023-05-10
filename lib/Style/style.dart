@@ -79,27 +79,30 @@ Ink SuccessButtonChild(ButtonText){
 }
 
 
-void ErrorToast(msg)
-{
+void ErrorToast(msg){
   Fluttertoast.showToast(
-      msg: "This is Center Short Toast",
+      msg: msg,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
       backgroundColor: colorRed,
-      textColor: Colors.white,
+      textColor: colorWhite,
       fontSize: 16.0
   );
 }
-void SuccessToast()
-{
+
+
+void SuccessToast(msg){
   Fluttertoast.showToast(
-      msg: "This is Center Short Toast",
+      msg: msg,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
       backgroundColor: colorGreen,
-      textColor: Colors.white,
+      textColor: colorWhite,
       fontSize: 16.0
   );
+
 }
+
+
