@@ -29,10 +29,12 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
   }
 FormOnSubmit() {
   if (FormValues['Img']!.length == 0) {
-    ErrorToast('Image required!');
+    ErrorToast('Image link required!');
 
   }
   else if (FormValues['ProductName']!.length == 0) {
+
+
 
   }
   else if (FormValues['ProductCode']!.length == 0) {}
