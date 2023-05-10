@@ -11,6 +11,23 @@ class ProductCreateScreen extends StatefulWidget {
 }
 
 class _ProductCreateScreenState extends State<ProductCreateScreen> {
+
+  Map<String,String>FormValues={
+    "Img":"",
+    "ProductCode":"",
+    "ProductName":"",
+    "Qty":"",
+    "TotalPrice":"",
+    "UnitPrice":""
+  };
+
+  InputOnChange(MapKey,textvalue)
+  {
+    setState(() {
+      FormValues.update(MapKey, (value) => textvalue);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,34 +40,29 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
               child: SingleChildScrollView(
                 padding: EdgeInsets.all(20),
                 child: Column(children: [
-                  TextField(onChanged:(value){} ,decoration: AppInputDecoration("Product Name"),),
+                  TextField(onChanged:(textvalue){
+                    InputOnChange("ProductName",textvalue);
+                  } ,decoration: AppInputDecoration("Product Name"),),
                   SizedBox(height: 20),
-                  TextField(onChanged: (value){},decoration: AppInputDecoration("Product Code"),),
+                  TextField(onChanged: (textvalue){
+                    InputOnChange("ProductCode",textvalue);
+                  }
+                  ,decoration: AppInputDecoration("Product Code"),),
                   SizedBox(height: 20),
-                  TextField(onChanged: (value){},decoration: AppInputDecoration("Product Image"),),
+                  TextField(onChanged: (textvalue){
+                    InputOnChange("Img",textvalue);
+                  },decoration: AppInputDecoration("Product Image"),),
                   SizedBox(height: 20),
-                  TextField(onChanged: (value){},decoration: AppInputDecoration("Unit Price"),),
+                  TextField(onChanged: (textvalue){
+                    InputOnChange("UnitPrice",textvalue);
+                  },decoration: AppInputDecoration("Unit Price"),),
                   SizedBox(height: 20),
-                  TextField(onChanged: (value){},decoration: AppInputDecoration("Total Price"),),
+                  TextField(onChanged: (textvalue){
+                    InputOnChange("TotalPrice",textvalue);
+                  },decoration: AppInputDecoration("Total Price"),),
                   SizedBox(height: 20),
 
-                  // AppDropDownStyle(
-                  //     DropdownButton(
-                  //       value:" " ,
-                  //       items:[
-                  //         DropdownMenuItem(child: Text('Select Qt'),value: "",),
-                  //         DropdownMenuItem(child: Text('1 pcs'),value: "1 pcs",),
-                  //         DropdownMenuItem(child: Text('2 pcs'),value: '2 pcs',),
-                  //         DropdownMenuItem(child: Text('3 pcs'),value: '3 pcs',),
-                  //         DropdownMenuItem(child: Text('4 pcs'),value: '4 pcs',),
-                  //       ],
-                  //       onChanged: (value){
-                  //
-                  //       },
-                  //       underline: Container(),
-                  //       isExpanded: true,
-                  //     )
-                  // ),
+
 AppDropDownStyle(
                   DropdownButton(items: [
                     DropdownMenuItem(child: Text('Select Qt'),value: "",),
@@ -58,7 +70,9 @@ AppDropDownStyle(
                             DropdownMenuItem(child: Text('2 pcs'),value: '2 pcs',),
                              DropdownMenuItem(child: Text('3 pcs'),value: '3 pcs',),
                              DropdownMenuItem(child: Text('4 pcs'),value: '4 pcs',),
-                  ], onChanged: (value){},
+                  ], onChanged: (textvalue){
+                    InputOnChange("Qty",textvalue);
+                  },
                   underline: Container(),
                     isExpanded: true,
 
