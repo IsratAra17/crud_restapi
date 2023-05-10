@@ -50,7 +50,10 @@ FormOnSubmit() {
     ErrorToast('Unit Price Required!');
 
   }
-  else if (FormValues['TotalPrice']!.length == 0) {}
+  else if (FormValues['TotalPrice']!.length == 0) {
+    ErrorToast('Total Price Required!');
+
+  }
 }
   @override
   Widget build(BuildContext context) {
