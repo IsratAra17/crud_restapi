@@ -27,6 +27,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
       FormValues.update(MapKey, (value) => textvalue);
     });
   }
+
 FormOnSubmit() {
   if (FormValues['Img']!.length == 0) {
     ErrorToast('Image link required!');
@@ -34,6 +35,7 @@ FormOnSubmit() {
   }
   else if (FormValues['ProductName']!.length == 0) {
 
+    ErrorToast('Product Name Required!');
 
 
   }
