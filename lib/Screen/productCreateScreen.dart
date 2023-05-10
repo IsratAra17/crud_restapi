@@ -54,6 +54,10 @@ FormOnSubmit() {
     ErrorToast('Total Price Required!');
 
   }
+  else
+    {
+
+    }
 }
   @override
   Widget build(BuildContext context) {
@@ -108,7 +112,9 @@ AppDropDownStyle(
                   ),),
                   SizedBox(height: 20),
 Container(child: ElevatedButton(style: AppButtonStyle(),
-  onPressed: (){}, child: SuccessButtonChild("Submit"),
+  onPressed: (){
+  FormOnSubmit();
+  }, child: SuccessButtonChild("Submit"),
 ),)
 
                 ],),
