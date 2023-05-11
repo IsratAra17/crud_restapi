@@ -13,6 +13,7 @@ class ProductCreateScreen extends StatefulWidget {
 
 class _ProductCreateScreenState extends State<ProductCreateScreen> {
 
+
   Map<String,String>FormValues={
     "Img":"",
     "ProductCode":"",
@@ -21,7 +22,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
     "TotalPrice":"",
     "UnitPrice":""
   };
-
+bool Loading=false;
   InputOnChange(MapKey,textvalue)
   {
     setState(() {
@@ -29,7 +30,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
     });
   }
 
-FormOnSubmit() {
+FormOnSubmit() async {
   if (FormValues['ProductName']!.length == 0) {
 
     ErrorToast('Product Name Required!');
@@ -58,8 +59,16 @@ FormOnSubmit() {
   }
   else
     {
+      setState(() {
+        Loading=true;
+      });
 //rest api
-  ProductCreateRequest(FormValues);
+      await ProductCreateRequest(FormValues);
+
+      setState(() {
+Loading=false;
+
+      });
     }
 }
   @override
