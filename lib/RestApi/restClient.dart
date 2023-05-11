@@ -12,6 +12,16 @@ async {
 
   var response = await http.post(URL, headers: PostHeader, body: PostBody);
 
-  
-  
+  var ResultCode = response.statusCode;
+  var ResultBody = json.decode(response.body);
+
+  if (ResultCode == 200 && ResultBody['status'] == "success")
+  {
+    SuccessToast("Request Success!");
+  }
+  else{
+    ErrorToast("Request Failed! Try again!!");
+  }
+
+
 }
