@@ -80,7 +80,7 @@ Loading=false;
           children: [
             ScreenBackground(context),
             Container(
-              child: SingleChildScrollView(
+              child: Loading?Center(child: (CircularProgressIndicator())):(SingleChildScrollView(
                 padding: EdgeInsets.all(20),
                 child: Column(children: [
                   TextField(onChanged:(textvalue){
@@ -90,7 +90,7 @@ Loading=false;
                   TextField(onChanged: (textvalue){
                     InputOnChange("ProductCode",textvalue);
                   }
-                  ,decoration: AppInputDecoration("Product Code"),),
+                    ,decoration: AppInputDecoration("Product Code"),),
                   SizedBox(height: 20),
                   TextField(onChanged: (textvalue){
                     InputOnChange("Img",textvalue);
@@ -106,31 +106,31 @@ Loading=false;
                   SizedBox(height: 20),
 
 
-AppDropDownStyle(
-                  DropdownButton(
+                  AppDropDownStyle(
+                    DropdownButton(
                       value: FormValues['Qty'],
-                    items: [
-                          DropdownMenuItem(child: Text('Select Qt'),value:""),
-                           DropdownMenuItem(child: Text('1 pcs'),value: "1 pcs",),
-                            DropdownMenuItem(child: Text('2 pcs'),value: '2 pcs',),
-                             DropdownMenuItem(child: Text('3 pcs'),value: '3 pcs',),
-                             DropdownMenuItem(child: Text('4 pcs'),value: '4 pcs',),
-                  ], onChanged: (textvalue){
-                    InputOnChange("Qty",textvalue);
-                  },
-                  underline: Container(),
-                    isExpanded: true,
+                      items: [
+                        DropdownMenuItem(child: Text('Select Qt'),value:""),
+                        DropdownMenuItem(child: Text('1 pcs'),value: "1 pcs",),
+                        DropdownMenuItem(child: Text('2 pcs'),value: '2 pcs',),
+                        DropdownMenuItem(child: Text('3 pcs'),value: '3 pcs',),
+                        DropdownMenuItem(child: Text('4 pcs'),value: '4 pcs',),
+                      ], onChanged: (textvalue){
+                      InputOnChange("Qty",textvalue);
+                    },
+                      underline: Container(),
+                      isExpanded: true,
 
-                  ),),
+                    ),),
                   SizedBox(height: 20),
-Container(child: ElevatedButton(style: AppButtonStyle(),
-  onPressed: (){
-  FormOnSubmit();
-  }, child: SuccessButtonChild("Submit"),
-),)
+                  Container(child: ElevatedButton(style: AppButtonStyle(),
+                    onPressed: (){
+                      FormOnSubmit();
+                    }, child: SuccessButtonChild("Submit"),
+                  ),)
 
                 ],),
-              )
+              )),
             )
           ],
       ),
