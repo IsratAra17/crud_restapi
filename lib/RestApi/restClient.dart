@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:crud_restapi/Style/style.dart';
 import 'package:http/http.dart'as http;
 
-ProductCreateRequest(FormValues)
+Future<bool>ProductCreateRequest(FormValues)
 async {
   var URL = Uri.parse("https://crud.teamrabbil.com/api/v1/CreateProduct");
   var PostBody = json.encode(FormValues);
