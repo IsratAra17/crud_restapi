@@ -1,4 +1,5 @@
 
+import 'package:crud_restapi/RestApi/restClient.dart';
 import 'package:crud_restapi/Style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,7 @@ FormOnSubmit() {
   else
     {
 //rest api
+  ProductCreateRequest(FormValues);
     }
 }
   @override
