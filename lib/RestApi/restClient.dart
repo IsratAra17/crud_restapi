@@ -18,9 +18,11 @@ async {
   if (ResultCode == 200 && ResultBody['status'] == "success")
   {
     SuccessToast("Request Success!");
+    return true;
   }
   else{
     ErrorToast("Request Failed! Try again!!");
+    return false;
   }
 
 
