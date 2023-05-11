@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:crud_restapi/Style/style.dart';
 import 'package:http/http.dart'as http;
 //Rest api Read the data from server
-ProductGridViewListRequest()async{
+Future<bool>ProductGridViewListRequest()async{
   {
     var URL = Uri.parse("https://crud.teamrabbil.com/api/v1/ReadProduct");
     var PostHeader = {"content-Type": "application/json"};
