@@ -41,50 +41,55 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
         children: [
           ScreenBackground(context),
           Container(
-            child: isLoading?(Center(child: CircularProgressIndicator(),)):(
-            GridView.builder(
-                gridDelegate:ProductGridViewStyle(),
-                itemCount: ProductList.length,
-                itemBuilder: (context, index) {
+            child: isLoading?(Center(child: CircularProgressIndicator(),)):(RefreshIndicator(
+              onRefresh:()async{
+            await CallData();
+            },
+              child:  GridView.builder(
+                    gridDelegate:ProductGridViewStyle(),
+                    itemCount: ProductList.length,
+                    itemBuilder: (context, index) {
 
-              return Card(
-                child:Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children:
+                      return Card(
+                        child:Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children:
 
-                  [
-                    Expanded(child: Image.network(ProductList[index]['img'],fit: BoxFit.fill,)),
+                          [
+                            Expanded(child: Image.network(ProductList[index]['img'],fit: BoxFit.fill,)),
 
-                  Container(
-                    padding:EdgeInsets.fromLTRB(5,5,5,8),
-                    child: Column
-                      (
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                            Container(
+                              padding:EdgeInsets.fromLTRB(5,5,5,8),
+                              child: Column
+                                (
+                                crossAxisAlignment: CrossAxisAlignment.start,
 
 
-                      children:
-                      [
+                                children:
+                                [
 
-                        Text(ProductList[index]['Product Name']),
-                      SizedBox(height: 7,),
-                        Text("Price:"+ProductList[index]['Unit Price']+"BDT"),
-                     Row(
-                       mainAxisAlignment: MainAxisAlignment.end,
-                       children: [
-                         OutlinedButton(onPressed: (){},child: Icon(CupertinoIcons.ellipsis_vertical_circle,size: 18,color: colorGreen,)),
-                         SizedBox(width: 4),
-                         OutlinedButton(onPressed: (){},child: Icon(CupertinoIcons.delete,size: 18,color: colorRed,),)
+                                  Text(ProductList[index]['Product Name']),
+                                  SizedBox(height: 7,),
+                                  Text("Price:"+ProductList[index]['Unit Price']+"BDT"),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      OutlinedButton(onPressed: (){},child: Icon(CupertinoIcons.ellipsis_vertical_circle,size: 18,color: colorGreen,)),
+                                      SizedBox(width: 4),
+                                      OutlinedButton(onPressed: (){},child: Icon(CupertinoIcons.delete,size: 18,color: colorRed,),)
 
-                       ],
-                     )
-                      ],
+                                    ],
+                                  )
+                                ],
 
-                  ),),
-                  ],
-                ),
+                              ),),
+                          ],
+                        ),
 
-              );
-            }))
+                      );
+                    }))
+            )
+
             ),
 
         ],
