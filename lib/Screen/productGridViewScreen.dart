@@ -1,4 +1,5 @@
 import 'package:crud_restapi/RestApi/restClient.dart';
+import 'package:crud_restapi/Style/style.dart';
 import 'package:flutter/material.dart';
 
 class ProductGridViewScreen extends StatefulWidget {
@@ -33,6 +34,19 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: Text("List Product")),
+      body: Stack(
+        children: [
+          ScreenBackground(context),
+          Container(
+            child: isLoading?(Center(child: CircularProgressIndicator(),)):(
+            GridView.builder(gridDelegate: gridDelegate, itemBuilder: itemBuilder)
+            ),
+          )
+        ],
+      ),
+
+    );
   }
 }
