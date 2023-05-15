@@ -34,6 +34,39 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
       Loading=false;
     });
   }
+
+
+  DeleteItem(id) async{
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text("Delete !"),
+            content: Text("Onece delete, you can't get it back"),
+            actions: [
+              OutlinedButton(onPressed: () async {
+
+                Navigator.pop(context);
+                setState(() {
+                  Loading=true;
+                });
+                await ProductDeleteRequest(id);
+                await CallData();
+
+              }, child: Text('Yes')),
+              OutlinedButton(onPressed: (){
+                Navigator.pop(context);
+              }, child: Text('No')),
+
+            ],
+          );
+
+        }
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +104,7 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
                                         }, child: Icon(CupertinoIcons.ellipsis_vertical_circle,size: 18,color: colorGreen,)),
                                         SizedBox(width: 4),
                                         OutlinedButton(onPressed: (){
-                                         // DeleteItem(ProductList[index]['_id']);
+                                          DeleteItem(ProductList[index]['_id']);
                                         }, child: Icon(CupertinoIcons.delete,size: 18,color: colorRed,))
                                       ],
                                     )
