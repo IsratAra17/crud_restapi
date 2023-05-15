@@ -1,5 +1,6 @@
 import 'package:crud_restapi/RestApi/restClient.dart';
 import 'package:crud_restapi/Screen/productCreateScreen.dart';
+import 'package:crud_restapi/Screen/productUpdateScreen.dart';
 import 'package:crud_restapi/Style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -47,9 +48,7 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
               OutlinedButton(onPressed: () async {
 
                 Navigator.pop(context);
-                setState(() {
-                  Loading=true;
-                });
+                setState(() {Loading=true;});
                 await ProductDeleteRequest(id);
                 await CallData();
 
@@ -62,6 +61,17 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
           );
 
         }
+    );
+  }
+
+
+
+  GotoUpdate(context,productItem){
+    Navigator.push(context,
+        MaterialPageRoute(
+            builder: (builder)=>
+                ProductUpdateScreen(productItem)
+        )
     );
   }
 
@@ -100,7 +110,7 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         OutlinedButton(onPressed: (){
-                                          //GotoUpdate(context,ProductList[index]);
+                                          GotoUpdate(context,ProductList[index]);
                                         }, child: Icon(CupertinoIcons.ellipsis_vertical_circle,size: 18,color: colorGreen,)),
                                         SizedBox(width: 4),
                                         OutlinedButton(onPressed: (){
