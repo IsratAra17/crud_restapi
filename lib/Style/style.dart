@@ -1,3 +1,4 @@
+import 'package:crud_restapi/Screen/productGridViewScreen.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,19 @@ const colorRed=Color.fromRGBO (231, 28, 36, 1);
 const colorGreen=Color.fromRGBO(33, 191, 115, 1);
 const colorWhite=Color.fromRGBO(255, 255, 255, 1);
 const colorDarkBlue=Color.fromRGBO(44, 62, 80, 1);
+
+SliverGridDelegateWithFixedCrossAxisCount ProductGridViewStyle()
+{
+return SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,
+mainAxisSpacing: 2,
+mainAxisExtent:250   //height
+
+);
+}
+
+
+
 
 SvgPicture ScreenBackground(context)
 {
