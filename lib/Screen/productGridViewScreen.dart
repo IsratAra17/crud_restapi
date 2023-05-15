@@ -1,5 +1,6 @@
 import 'package:crud_restapi/RestApi/restClient.dart';
 import 'package:crud_restapi/Style/style.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductGridViewScreen extends StatefulWidget {
@@ -41,9 +42,23 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
           ScreenBackground(context),
           Container(
             child: isLoading?(Center(child: CircularProgressIndicator(),)):(
-            GridView.builder(gridDelegate: gridDelegate, itemBuilder: itemBuilder)
+            GridView.builder(gridDelegate:ProductGridViewStyle(), itemBuilder: (context, index) {
+
+              return Card(
+                child:Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children:
+
+                  [
+                    Expanded(child: Image.network(ProductList[index]['img'],fit: BoxFit.fill,))
+
+                  ],
+                ),
+
+              );
+            }))
             ),
-          )
+
         ],
       ),
 
