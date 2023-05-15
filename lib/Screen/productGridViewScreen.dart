@@ -1,4 +1,5 @@
 import 'package:crud_restapi/RestApi/restClient.dart';
+import 'package:crud_restapi/Screen/productCreateScreen.dart';
 import 'package:crud_restapi/Style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class ProductGridViewScreen extends StatefulWidget {
 class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
 
   List ProductList=[];
-  bool isLoading=true;
+  bool Loading=true;
 
   @override
   void initState() {
@@ -26,75 +27,77 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
 
   CallData()async{
 
-    isLoading=true;
+    Loading=true;
     var data=await ProductGridViewListRequest();
     setState(() {
       ProductList=data as List;
-      isLoading=false;
+      Loading=false;
     });
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("List Product")),
+      appBar: AppBar(title: Text('List Product'),),
       body: Stack(
         children: [
           ScreenBackground(context),
           Container(
-            child: isLoading?(Center(child: CircularProgressIndicator(),)):(RefreshIndicator(
-              onRefresh:()async{
-            await CallData();
-            },
-              child:  GridView.builder(
-                    gridDelegate:ProductGridViewStyle(),
-                    itemCount: ProductList.length,
-                    itemBuilder: (context, index) {
-
-                      return Card(
-                        child:Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children:
-
-                          [
-                            Expanded(child: Image.network(ProductList[index]['img'],fit: BoxFit.fill,)),
-
-                            Container(
-                              padding:EdgeInsets.fromLTRB(5,5,5,8),
-                              child: Column
-                                (
-                                crossAxisAlignment: CrossAxisAlignment.start,
-
-
-                                children:
-                                [
-
-                                  Text(ProductList[index]['Product Name']),
-                                  SizedBox(height: 7,),
-                                  Text("Price:"+ProductList[index]['Unit Price']+"BDT"),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      OutlinedButton(onPressed: (){},child: Icon(CupertinoIcons.ellipsis_vertical_circle,size: 18,color: colorGreen,)),
-                                      SizedBox(width: 4),
-                                      OutlinedButton(onPressed: (){},child: Icon(CupertinoIcons.delete,size: 18,color: colorRed,),)
-
-                                    ],
-                                  )
-                                ],
-
-                              ),),
-                          ],
-                        ),
-
-                      );
-                    }))
-            )
-
-            ),
-
+              child: Loading?(Center(child: CircularProgressIndicator())):RefreshIndicator(
+                  onRefresh: () async {
+                    await CallData();
+                  },
+                  child: GridView.builder(
+                      gridDelegate: ProductGridViewStyle(),
+                      itemCount: ProductList.length,
+                      itemBuilder: (context,index){
+                        return Card(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Expanded(child: Image.network(ProductList[index]['Img'],fit: BoxFit.fill)),
+                              Container(
+                                padding: EdgeInsets.fromLTRB(5,5,5,8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(ProductList[index]['ProductName']),
+                                    SizedBox(height: 7),
+                                    Text("Price: "+ProductList[index]['UnitPrice']+" BDT"),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        OutlinedButton(onPressed: (){
+                                          //GotoUpdate(context,ProductList[index]);
+                                        }, child: Icon(CupertinoIcons.ellipsis_vertical_circle,size: 18,color: colorGreen,)),
+                                        SizedBox(width: 4),
+                                        OutlinedButton(onPressed: (){
+                                         // DeleteItem(ProductList[index]['_id']);
+                                        }, child: Icon(CupertinoIcons.delete,size: 18,color: colorRed,))
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      }
+                  )
+              )
+          )
         ],
       ),
-
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.push(context,
+              MaterialPageRoute(
+                  builder: (builder)=>
+                      ProductCreateScreen()
+              )
+          );
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
